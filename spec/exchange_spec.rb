@@ -21,5 +21,9 @@ describe Exchange do
     it "has a collection of clients" do
       expect(exchange.clients).to_not eql nil
     end
+    it "contains Client objects" do
+      exchange.clients['bob'] = Client.new('bob')
+      expect(exchange.clients['bob']).to be_a_kind_of(Client)
+    end
   end
 end
