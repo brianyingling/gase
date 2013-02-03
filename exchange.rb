@@ -26,4 +26,3 @@ class Exchange
   end
 end
 
-binding.pry

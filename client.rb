@@ -55,9 +55,8 @@ class Client
   end
 
   def to_s
-    "#{@name} has $#{@balance} and #{@portfolios} portfolios"
+    "#{@name}"
   end
 end
 
-binding.pry
 
