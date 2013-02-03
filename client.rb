@@ -1,5 +1,6 @@
 require 'pry'
 require 'pry-debugger'
+require 'yahoofinance'
 require_relative 'portfolio'
 
 class Client
@@ -54,9 +55,19 @@ class Client
     @portfolios[portfolio_name].stocks[stock] -= shares
   end
 
+  def check_stock_price(stock)
+    begin
+      YahooFinance::get_quotes(YahooFinance::StandardQuote, stock)[stock].lastTrade
+    rescue
+      retry
+    end
+  end
+
   def to_s
     "#{@name}"
   end
 end
+
+binding.pry
 
 

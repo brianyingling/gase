@@ -10,6 +10,7 @@ def menu
   puts "(4)  View All of My Portfolios"
   puts "(5)  View all Clients"
   puts "(6)  View My Account Balance"
+  puts "(7)  Check Stock Price"
   print "->"
   gets.chomp
 end
@@ -70,7 +71,20 @@ def view_account_balance
   gets
 end
 
-def check_if_account_exists(name)
+def view_stock_price
+  print "What is your first name? "
+  name = gets.chomp
+  if !$exchange.clients.include?(name)
+    print "#{name} Not Listed: Create an Account? y/n: "
+    resp = gets.chomp
+    resp.downcase == 'y' ? create_account : return
+  end
+  print "Please enter the stock symbol: "
+  stock = gets.chomp
+  price = $exchange.clients[name].check_stock_price(stock)
+  puts "#{stock} costs #{price}."
+  puts "Press Enter to Continue..."
+  gets
 end
 
 

@@ -130,4 +130,12 @@ describe Client do
       expect(client.portfolios['tech'].stocks['AAPL']).to eq 50
     end
   end
+
+  describe ".check_stock_price(stock)" do
+    it "checks the price of a given stock" do
+      client.create_portfolio('tech', Portfolio.new)
+      client.check_stock_price('AAPL')
+      expect(client.check_stock_price('AAPL')).to be_a_kind_of(Float)
+    end
+  end
 end

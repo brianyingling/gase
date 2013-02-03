@@ -14,6 +14,7 @@ while response.downcase != 'q'
   when '4' then ## call function
   when '5' then view_all_clients
   when '6' then view_account_balance
+  when '7' then view_stock_price
   else menu_error
   end
   response = menu
