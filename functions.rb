@@ -31,11 +31,7 @@ end
 def add_portfolio
   print "What is your first name? "
   name = gets.chomp
-  if !$exchange.clients.include?(name)
-    print "#{name} Not Listed: Create an Account? y/n: "
-    resp = gets.chomp
-    resp.downcase == 'y' ? create_account : return
-  end
+  return if check_if_account_exists?(name) == false
   print "Name of your portfolio (one word): "
   new_portfolio = gets.chomp
   $exchange.clients[name].portfolios[new_portfolio] = Portfolio.new
@@ -60,11 +56,7 @@ end
 def view_account_balance
   print "What is your first name? "
   name = gets.chomp
-  if !$exchange.clients.include?(name)
-    print "#{name} Not Listed: Create an Account? y/n: "
-    resp = gets.chomp
-    resp.downcase == 'y' ? create_account : return
-  end
+  return if check_if_account_exists?(name) == false
   balance = $exchange.clients[name].balance
   puts "#{name}'s account balance is #{balance}."
   puts "Press Enter to Continue..."
@@ -74,11 +66,7 @@ end
 def view_stock_price
   print "What is your first name? "
   name = gets.chomp
-  if !$exchange.clients.include?(name)
-    print "#{name} Not Listed: Create an Account? y/n: "
-    resp = gets.chomp
-    resp.downcase == 'y' ? create_account : return
-  end
+  return if check_if_account_exists?(name) == false
   print "Please enter the stock symbol: "
   stock = gets.chomp
   price = $exchange.clients[name].check_stock_price(stock)
@@ -87,7 +75,13 @@ def view_stock_price
   gets
 end
 
-
+def check_if_account_exists?(name)
+  if !$exchange.clients.include?(name)
+    print "#{name} not listed. Create an account? y/n: "
+    resp = gets.chomp
+    resp.downcase == 'y' ? create_account : false
+  end
+end
 
 def menu_error
   puts "Invalid Entry: Please Enter to continue"
