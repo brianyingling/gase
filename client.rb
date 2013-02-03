@@ -4,10 +4,10 @@ require_relative 'portfolio'
 
 class Client
   attr_accessor :name, :balance, :portfolios
-  def initialize(name)
+  def initialize(name, balance=0.0, portfolios={})
     @name = name
-    @balance = 0.0
-    @portfolios = {}
+    @balance = balance
+    @portfolios = portfolios
   end
 
   def withdraw(amount)
@@ -24,6 +24,18 @@ class Client
 
   def delete_portfolio(name)
     @portfolios[name] = nil
+  end
+
+  def display_portfolios
+    output = ""
+    @portfolios.each do |name, portfolio|
+      output += "#{name}\t: "
+      portfolio.stocks.each do |stock, shares|
+        output += "#{stock}: #{shares}\t"
+      end
+      output += "\n"
+    end
+    output
   end
 
   def buy(stock, shares, price, portfolio_name)
@@ -45,6 +57,7 @@ class Client
   def to_s
     "#{@name} has $#{@balance} and #{@portfolios} portfolios"
   end
-
 end
+
+binding.pry
 

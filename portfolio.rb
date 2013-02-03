@@ -1,6 +1,10 @@
 class Portfolio
-  attr_accessor :stocks
-  def initialize
+  attr_accessor :name, :stocks
+  def initialize(name="default")
     @stocks = {}
+    @name = name
+  end
+  def to_s
+    "Stocks: #{@stocks}"
   end
 end

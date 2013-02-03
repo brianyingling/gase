@@ -89,6 +89,17 @@ describe Client do
       end
   end
 
+  describe ".display_portfolios" do
+    it "lists the portfolios owned by the client" do
+      client.create_portfolio('tech', Portfolio.new)
+      client.create_portfolio('energy', Portfolio.new)
+      client.portfolios['tech'].stocks['ibm'] = 100
+      client.portfolios['tech'].stocks['msft'] =250
+      client.portfolios['energy'].stocks['ge'] = 100
+      expect(client.display_portfolios).to be_a_kind_of(String)
+    end
+  end
+
   describe ".buy" do
     it "purchases stock" do
       client.create_portfolio('tech', Portfolio.new)
@@ -112,15 +123,11 @@ describe Client do
       client.sell('AAPL',50,50,'tech')
       expect(client.portfolios['tech'].stocks['AAPL']).to eq 0
     end
-    it "ignores if shares held are less than shares offered. " do
+    it "ignores if shares held are less than shares offered." do
       client.create_portfolio('tech',Portfolio.new)
       client.portfolios['tech'].stocks['AAPL'] = 50
       client.sell('AAPL',100,50,'tech')
       expect(client.portfolios['tech'].stocks['AAPL']).to eq 50
     end
-
   end
-
-
-
 end
