@@ -22,7 +22,7 @@ class Portfolio
       price = @stocks[i[0]].total_stock_val
       total = total + price
     end
-    puts total
+    total
   end
 
 end
