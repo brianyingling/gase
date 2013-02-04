@@ -1,17 +1,17 @@
 def menu
   system('clear')
-  40.times { print "*"}
-  puts "\nWelcome to General Assembly Stock Exchange"
-  40.times { print "*"}
-  puts "\nPlease make a selection below, or (Q)uit."
-  puts "(1)  Create an Account"
-  puts "(2)  Add a Portfolio"
-  puts "(3)  View a Portfolio"
-  puts "(4)  View All of My Portfolios"
-  puts "(5)  View all Clients"
-  puts "(6)  View My Account Balance"
-  puts "(7)  Check Stock Price"
-  puts "(8)  Buy or Sell Stock"
+  40.times { print "*".color(:blue)}
+  puts "\nWelcome to General Assembly Stock Exchange".color(:blue)
+  40.times { print "*".color(:blue)}
+  puts "\nPlease make a selection below, or (Q)uit.".color(:cyan)
+  puts "(1)  Create an Account".color(:cyan)
+  puts "(2)  Add a Portfolio".color(:cyan)
+  puts "(3)  View a Portfolio".color(:cyan)
+  puts "(4)  View All of My Portfolios".color(:cyan)
+  puts "(5)  View all Clients".color(:cyan)
+  puts "(6)  View My Account Balance".color(:cyan)
+  puts "(7)  Check Stock Price".color(:cyan)
+  puts "(8)  Buy or Sell Stock".color(:cyan)
   print "-> "
   gets.chomp
 end
