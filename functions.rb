@@ -11,7 +11,8 @@ def menu
   puts "(5)  View all Clients"
   puts "(6)  View My Account Balance"
   puts "(7)  Check Stock Price"
-  print "->"
+  puts "(8)  Buy or Sell Stock"
+  print "-> "
   gets.chomp
 end
 
@@ -61,6 +62,24 @@ def view_account_balance
   puts "#{name}'s account balance is #{balance}."
   puts "Press Enter to Continue..."
   gets
+end
+
+def purchase_or_sell_stock
+  print "(B)uy or (S)ell Stock: "
+  resp = gets.chomp.upcase
+  case resp
+  when "B" then buy_stock
+  when "S" then sell_stock
+  else
+    "Error: Press Enter to Continue..."
+    gets
+  end
+end
+
+def buy_stock
+end
+
+def sell_stock
 end
 
 def view_stock_price
