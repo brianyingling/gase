@@ -40,7 +40,7 @@ class Client
   end
 
   def buy(stock, shares, price, portfolio_name)
-    return if @balance < shares*price
+    return false if @balance < shares*price
     self.withdraw(shares*price)
     if @portfolios[portfolio_name].stocks[stock]
       @portfolios[portfolio_name].stocks[stock] += shares
