@@ -109,7 +109,7 @@ class Client
 
 
   def to_s
-    "#{@name} has #{@portfolios.count}"
+    "#{@name} has #{@portfolios.count} portfolios."
   end
 end
 

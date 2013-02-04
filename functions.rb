@@ -46,7 +46,7 @@ def view_portfolio
   name = gets.chomp
   print "What is the name of the portfolio? "
   port_name = gets.chomp
-  puts "The portfolio #{port_name} does not currently exist. Please add it before you view it." unless $exchange.clients[name].portfolios.include? port_name
+  "The portfolio #{port_name} does not currently exist. Please add it before you view it." unless $exchange.clients[name].portfolios.include? port_name
   puts "#{port_name} contains #{$exchange.clients[name].portfolios[port_name].stocks.count}:"
   $exchange.clients[name].portfolios[port_name].stock_list
   puts "The total value of #{port_name} is $#{$exchange.clients[name].portfolios[port_name].portfolio_val}"

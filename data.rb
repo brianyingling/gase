@@ -9,9 +9,9 @@ require_relative "Stock"
 $exchange = Exchange.new('General Assembly Stock Exchange')
 
 $exchange.clients['Bob'] = Client.new('Bob',10000.00)
-$exchange.clients['Sue'] = Client.new('Bob',100.00)
-$exchange.clients['George'] = Client.new('Bob',100.00)
-$exchange.clients['Jen'] = Client.new('Bob',100.00)
+$exchange.clients['Sue'] = Client.new('Sue',100.00)
+$exchange.clients['George'] = Client.new('George',100.00)
+$exchange.clients['Jen'] = Client.new('Jen',100.00)
 
 $exchange.clients['Bob'].portfolios['tech'] = Portfolio.new("tech")
 $exchange.clients['Bob'].portfolios['tech'].stocks['AAPL'] = Stock.new("AAPL", 2)
