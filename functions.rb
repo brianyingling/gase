@@ -46,10 +46,13 @@ def view_portfolio
   name = gets.chomp
   print "What is the name of the portfolio? "
   port_name = gets.chomp
-  "The portfolio #{port_name} does not currently exist. Please add it before you view it." unless $exchange.clients[name].portfolios.include? port_name
-  puts "#{port_name} contains #{$exchange.clients[name].portfolios[port_name].stocks.count}:"
-  $exchange.clients[name].portfolios[port_name].stock_list
-  puts "The total value of #{port_name} is $#{$exchange.clients[name].portfolios[port_name].portfolio_val}"
+  if !$exchange.clients[name].portfolios.include? port_name
+    puts "The portfolio #{port_name} does not currently exist. Please add it before you view it."
+  else
+    puts "#{port_name} contains #{$exchange.clients[name].portfolios[port_name].stocks.count}:"
+    $exchange.clients[name].portfolios[port_name].stock_list
+    puts "The total value of #{port_name} is $#{$exchange.clients[name].portfolios[port_name].portfolio_val}"
+  end
   print "Press Enter to Continue... "
   gets
 end
@@ -118,8 +121,9 @@ def sell_stock
   print "What is your name? "
   name = gets.chomp
   return "You do not currently have an account. Please make one before you buy stock" if check_if_account_exists?(name) == false
-  puts "Which portfolio would you like to enter this into? "
+
   $exchange.clients[name].portfolio_list
+  puts "Which portfolio would you like to enter this into? "
   portfolio = gets.chomp
   print "Please enter the stock symbol: "
   stock = gets.chomp
