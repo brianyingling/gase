@@ -18,7 +18,7 @@ class Exchange
   end
 
   def display_clients
-    @clients.values.join(', ')
+    puts @clients.values
   end
 
   def to_s
